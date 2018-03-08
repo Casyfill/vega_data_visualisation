@@ -1,0 +1,192 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.json",
+  "width": 800,
+  "autosize": {"type":"fit", "resize":true},
+  "height": 400,
+  "padding": {"left": 5, "top": 5, "right": 5, "bottom": 5},
+
+   "config": {
+    "legend": {
+      "orient":"bottom"
+    },
+    "axis":{"titleFont":"Source Sans Pro", "titleFontSize":20,
+            "titleFontWeight":300, "titleFontColor":"#191F2D",
+            "labelFont":"Source Sans Pro", "labelFontSize":10,
+            "labelFontWeight":300, "labelFontColor":"#191F2D"},
+    "axisX":{"labelAngle":0},
+    "mark":{"color": "#072770"}
+  },
+
+
+"usermeta": {
+    "title": "Relative Monthly Seasonal Variation",
+    "tooltip":{
+      "showAllFields": false,
+      "fields": [
+        {
+          "field": "Median Days on Market",
+          "formatType": "number",
+          "format": ".1%"
+        },
+        {
+          "field": "Price Cuts",
+          "formatType": "number",
+          "format": ".1%"
+        },
+        {
+          "field": "Inventory",
+          "formatType": "number",
+          "format": ".1%"
+        },
+        {
+          "field": "Price Index",
+          "formatType": "number",
+          "format": ".1%"
+        }
+      ]
+    }
+  },
+  
+
+  "data": [
+    {
+      "name": "table",
+      "values": [{"Inventory": -0.076437698,
+  "Median Days on Market": 0.381222447,
+  "Month": "Jan",
+  "Price Cuts": -0.012304524,
+  "Price Index": -0.000331877},
+ {"Inventory": -0.053106807,
+  "Median Days on Market": 0.158316747,
+  "Month": "Feb",
+  "Price Cuts": -0.179069949,
+  "Price Index": -0.003239874},
+ {"Inventory": 0.010064487,
+  "Median Days on Market": -0.09086525,
+  "Month": "Mar",
+  "Price Cuts": 0.025258401,
+  "Price Index": -0.004061973},
+ {"Inventory": 0.049492651,
+  "Median Days on Market": -0.224,
+  "Month": "Apr",
+  "Price Cuts": 0.075946444,
+  "Price Index": -0.002813911},
+ {"Inventory": 0.072284026,
+  "Median Days on Market": -0.2150,
+  "Month": "May",
+  "Price Cuts": 0.149462832,
+  "Price Index": -0.00039},
+ {"Inventory": 0.053855223,
+  "Median Days on Market": -0.1248,
+  "Month": "Jun",
+  "Price Cuts": 0.152845196,
+  "Price Index": 0.000189145},
+ {"Inventory": 0.007223177,
+  "Median Days on Market": -0.03690,
+  "Month": "Jul",
+  "Price Cuts": -0.027087091,
+  "Price Index": 0.0030953990},
+ {"Inventory": -0.028090007,
+  "Median Days on Market": 0.03285,
+  "Month": "Aug",
+  "Price Cuts": -0.229950539,
+  "Price Index": 0.003916807},
+ {"Inventory": 0.0078,
+  "Median Days on Market": 0.1118,
+  "Month": "Sep",
+  "Price Cuts": 0.2373,
+  "Price Index": 0.0013},
+ {"Inventory": 0.0450,
+  "Median Days on Market": -0.1146,
+  "Month": "Oct",
+  "Price Cuts": 0.217361366,
+  "Price Index": -0.000121209},
+ {"Inventory": -0.002091092,
+  "Median Days on Market": -0.0318,
+  "Month": "Nov",
+  "Price Cuts": -0.007788006,
+  "Price Index": -0.002953014},
+ {"Inventory": -0.087006582,
+  "Median Days on Market": 0.1047,
+  "Month": "Dec",
+  "Price Cuts": -0.403404629,
+  "Price Index": -0.003170769}]
+    },
+    
+     {
+      "name": "domains",
+      "values": [
+        {"Inventory":-0.1,
+        "Median Days on Market": -0.5,
+        "Price Cuts":-0.5,
+        "Price Index":-0.01},
+        {"Inventory":0.1,
+        "Median Days on Market": 0.5,
+        "Price Cuts":0.5,
+        "Price Index":0.01}
+      ]
+     }
+    
+    ],
+
+  "signals": [
+    {"name":"Metric", "description":"Selects metric",
+     "bind":{"input":"radio", "options":["Price Cuts", "Price Index", "Median Days on Market", "Inventory"],
+            "element":"div#interface",
+            "debounce":100},
+     "value":"Price Cuts"
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "xscale",
+      "type": "band",
+      "domain": {"data": "table", "field": "Month"},
+      "range": "width",
+      "padding": 0.1
+      
+    },
+    {
+      "name": "yscale",
+      "domain": {"data": "domains", "field": {"signal":"Metric"}},
+      "nice": true,
+      "range": "height"
+    },
+  {
+    "name": "c",
+    "type": "bin-ordinal",
+    "domain": [-100,0,100],
+    "range": ["#032765", "#0195E5"]
+  }
+  
+  ],
+
+  "axes": [
+    { "orient": "bottom", "scale": "xscale"
+    },
+    { "orient": "left", "scale": "yscale",
+      "title":{"signal":"Metric"} }
+  ],
+
+  "marks": [
+    {
+      "type": "rect",
+      "from": {"data":"table"},
+      "encode": {
+        "enter": {
+        },
+        "update": {
+          "x": {"scale": "xscale", "field": "Month"},
+          "width": {"scale": "xscale", "band": 1},
+          "y": {"scale": "yscale", "field": {"signal":"Metric"}},
+          "y2": {"scale": "yscale", "value": 0},
+          "fill":{"scale":"c", 
+                  "field": {"signal":"Metric"}}
+        },
+        "hover": {
+        }
+      }
+    }
+  ]
+}

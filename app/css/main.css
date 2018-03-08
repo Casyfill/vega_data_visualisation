@@ -1,0 +1,101 @@
+#window {
+  max-width: 816px;
+  box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
+}
+
+div#header {
+  padding-top: 35px;
+  margin-bottom:50px;
+}
+
+img#Logo {
+  width:115.4px;
+  height:25px;
+  display: block;
+  margin: 0 auto;
+
+}
+
+div.Container-Logo {
+  padding-bottom: 10px;
+}
+
+h1.Title{
+  color: #081C4F;
+  font-family: "Source Sans Pro";
+  font-size: 28px;
+  font-weight: 300;
+  line-height: 50px;
+  text-align: center;
+  margin: 0px;
+}
+
+h2.Secondary{
+  color: #000000;
+  font-family: "Source Sans Pro";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  text-align: center;
+  margin: 0px;
+}
+
+#interface{
+  justify-content: center;
+  display: flex;
+}
+
+#interface input{
+  margin-left: 10px;
+  margin-right: 3px;
+}
+
+#interface{
+  font-family: "Source Sans Pro";
+  font-size: 16px;
+  line-height: 30px;
+}
+
+text.body{
+  color: #191F2D;
+  font-family: "Source Sans Pro";
+  font-size: 16px;
+  line-height: 30px;
+}
+
+text.disclimer{
+  color: #8C8C8C;
+  font-family: "Source Sans Pro";
+  font-size: 12px;
+  line-height: 16px;
+}
+
+
+div.chart {
+  max-width: 746px;
+  max-height: 1000px;
+  width: 100%;
+  height: 100%;
+}
+
+#Container-Data{
+  width: 100%;
+  height: 100%;
+  position:relative;
+  width: -moz-calc(100% - 2*35px);
+  width: -webkit-calc(100% - 2*35px);
+  width: -o-calc(100% - 2*35px);
+  width: calc(100% - 2*35px);
+  margin: 35px;
+}
+
+img#v404{
+  display:block;
+  width:100%; height:100%;
+  object-fit: cover;
+}
+
+g.role-mark > path {
+  -webkit-transition: width 2s, height 2s; /* For Safari 3.1 to 6.0 */
+  transition: width 2s, height 2s;
+}

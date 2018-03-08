@@ -1,0 +1,68 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "width": 800,
+  "autosize": {"type":"fit", "resize":true},
+  "height": 400,
+  "padding": {"left": 5, "top": 5, "right": 5, "bottom": 5},
+
+  "usermeta":{
+    "title": "Days On Market",
+    "subtitle": "NYC, 2017"
+  },
+
+  "config": {
+    "axis":{"titleFont":"Source Sans Pro", "titleFontSize":20,
+            "titleFontWeight":300, "titleFontColor":"#191F2D",
+            "labelFont":"Source Sans Pro", "labelFontSize":10,
+            "labelFontWeight":300, "labelFontColor":"#191F2D"},
+    "axisX":{"labelAngle":0},
+    "mark":{"color": "#072770"}
+  },
+
+  "data":{
+      "values":[
+        {"name":"NYC Median","Days on Market":70}
+      ]
+    },
+  
+  "layer": [
+    {
+      "data":{"values":[{"Tier":"Q1","type":"bar","Days on Market":63},
+                    {"Tier":"Q2","type":"bar","Days on Market":58},
+                    {"Tier":"Q3","type":"bar","Days on Market":63},
+                    {"Tier":"Q4","type":"bar","Days on Market":73},
+                    {"Tier":"Q5","type":"bar","Days on Market":110}]
+  },
+    "mark":"bar",
+    "encoding":{
+      "x":{"field":"Tier","type":"ordinal"},
+      "y":{"field":"Days on Market","type":"quantitative"}
+      }
+    },
+    {
+      "mark":"rule",
+      "encoding": {
+      "y": {"field":"Days on Market", "type":"quantitative"},
+      "color": {"value": "#3FE8DF"},
+      "size": {"value": 2}
+    }
+    },
+    {
+    "mark": {"type":"text",
+             "font": "Source Sans Pro",
+             "align":"left",
+             "fontSize":18,
+             "dy":-5,
+             "dx":5},
+    "encoding": {
+      "y": {"field":"Days on Market", "type":"quantitative"},
+      "x": {"value": 0 },
+      "text": {"value":"NYC median: 70"},
+      "color": {
+        "value": "#3FE8DF"
+      }
+    }
+  }
+  ]
+  
+}
